@@ -11,7 +11,8 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000/api',
+        //url: 'http://localhost:5000/api',
+        url:'https://organization-crud.onrender.com/api',
         description: 'Development server',
       },
     ],
