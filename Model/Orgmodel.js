@@ -36,4 +36,4 @@ const OrganizationSchema = new mongoose.Schema({
   //fhirData: mongoose.Schema.Types.Mixed // Field to store FHIR JSON data
 });
 
-module.exports = mongoose.model('Organization', OrganizationSchema);
+module.exports = mongoose.model('Organizationcrud', OrganizationSchema);
