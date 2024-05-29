@@ -431,6 +431,10 @@ router.post('/organization', async (req, res) => {
     if (!req.body.organizationdetails || req.body.organizationdetails.length === 0) {
       throw new Error("organizationdetails is missing or empty");
     }
+      const existingOrganization = await Organization.findOne({ email: req.body.email });
+    if (existingOrganization) {
+      throw new Error("An organization with this email already exists.");
+    }
 
     const org = new Organization(req.body);
     await org.save();
