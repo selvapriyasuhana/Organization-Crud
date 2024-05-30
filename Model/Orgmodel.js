@@ -5,7 +5,7 @@ const OrganizationDetailsSchema = new mongoose.Schema({
   tin: String,
   type: String,
   name: String
-});
+},{ _id: false });
 
 const ContactSchema = new mongoose.Schema({
   addressLine1: String,
@@ -14,14 +14,14 @@ const ContactSchema = new mongoose.Schema({
   state: String,
   zip: String,
   country: String
-});
+},{ _id: false });
 
 const PointOfContactSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   email: String,
   phoneNumber: String
-});
+},{ _id: false });
 
 const OrganizationSchema = new mongoose.Schema({
   organizationdetails: [OrganizationDetailsSchema],
