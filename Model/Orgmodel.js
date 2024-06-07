@@ -23,6 +23,12 @@ const PointOfContactSchema = new mongoose.Schema({
   phoneNumber: String
 },{ _id: false });
 
+const EndpointSchema = new mongoose.Schema({
+  //endpoint: String
+  reference: String
+},{ _id: false });
+
+
 const OrganizationSchema = new mongoose.Schema({
   organizationdetails: [OrganizationDetailsSchema],
   email: String,
@@ -32,7 +38,8 @@ const OrganizationSchema = new mongoose.Schema({
   pointofcontact: [PointOfContactSchema],
   active: { type: Boolean, default: true },
   partOf: String,
-  endpoint: String,
+  endpoint: [EndpointSchema]
+ //endpoint: String,
   //fhirData: mongoose.Schema.Types.Mixed // Field to store FHIR JSON data
 });
 
