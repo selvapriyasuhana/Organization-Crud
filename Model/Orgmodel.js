@@ -37,7 +37,7 @@ const OrganizationSchema = new mongoose.Schema({
   contact: [ContactSchema],
   pointofcontact: [PointOfContactSchema],
   active: { type: Boolean, default: true },
-  partOf: String,
+  //partOf: String,
   endpoint: [EndpointSchema]
  //endpoint: String,
   //fhirData: mongoose.Schema.Types.Mixed // Field to store FHIR JSON data
