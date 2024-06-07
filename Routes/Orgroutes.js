@@ -79,7 +79,7 @@ const toFhirOrganization = (org) => {
         { system: "phone", value: poc.phoneNumber }
       ]
     })),
-    partOf: org.partOf ? { reference: org.partOf } : undefined,
+   // partOf: org.partOf ? { reference: org.partOf } : undefined,
     endpoint: org.endpoint.map(ep => ({ reference: ep.reference }))
  
    // endpoint: org.endpoint ? [{ reference: org.endpoint }] : []
@@ -117,8 +117,7 @@ const toFhirOrganization = (org) => {
  *             $ref: '#/components/schemas/PointOfContact'
  *         active:
  *           type: boolean
- *         partOf:
- *           type: string
+ *        
  *         endpoint:
  *           type: array
  *           items:
