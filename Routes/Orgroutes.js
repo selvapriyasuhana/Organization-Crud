@@ -246,6 +246,30 @@ router.post('/organization', async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 });
+// /**
+//  * @swagger
+//  * /organizations:
+//  *   get:
+//  *     summary: Get all organizations
+//  *     responses:
+//  *       200:
+//  *         description: A list of organizations
+//  *         content:
+//  *           application/json:
+//  *             schema:
+//  *               type: array
+//  *               items:
+//  *                 $ref: '#/components/schemas/Organization'
+//  */
+// router.get('/organizations', async (req, res) => {
+//   try {
+//     const organizations = await Organization.find();
+//     const response = organizations.map(org => toFhirOrganization(org));
+//     res.status(200).json(response);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
 /**
  * @swagger
  * /organizations:
@@ -264,12 +288,22 @@ router.post('/organization', async (req, res) => {
 router.get('/organizations', async (req, res) => {
   try {
     const organizations = await Organization.find();
-    const response = organizations.map(org => toFhirOrganization(org));
+    if (!organizations) {
+      throw new Error("No organizations found");
+    }
+    const response = organizations.map(org => {
+      if (!org) {
+        throw new Error("Organization data is undefined");
+      }
+      return toFhirOrganization(org);
+    });
     res.status(200).json(response);
   } catch (error) {
+    console.error('Error fetching organizations:', error);
     res.status(400).json({ message: error.message });
   }
 });
+
 // router.get('/organizations', async (req, res) => {
 //   try {
 //     const organizations = await Organization.find();
